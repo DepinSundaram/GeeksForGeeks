@@ -38,38 +38,38 @@ int main() {
     int sum = 0;
     cin >> testCount;
 
-    for (int i = 0; i < testCount; i++) {
-        cin >> E_Count;
-        cin >> E_Sum;
-        int iRange = 0;
-        int* arr = NULL;
-        arr = (int*)malloc(E_Count * sizeof(int));
-        for (int z = 0; z < E_Count; z++)
-        {
-            cin >> arr[z];
-        }
-        for (int j = 0; j < E_Count; j++) {
-            sum += arr[j];
-            if (sum == E_Sum) {
-                cout << iRange + 1 << " " << j + 1 << std::endl;
-                break;
+    for(int i = 0; i < testCount; i++){
+            cin >> E_Count;
+            cin >> E_Sum;
+            int iRange = 0;
+            int *arr = NULL;
+            arr = (int*)malloc(E_Count*sizeof(int));
+            for(int z = 0; z < E_Count; z++)
+            {
+                cin >> arr[z];
             }
-            else if (sum < E_Sum) {
-                continue;
+            for (int j = 0; j < E_Count; j++) {
+                sum += arr[j];
+                if (sum == E_Sum) {
+                    cout << iRange + 1 << " " << j + 1 << std::endl;
+                    break;
+                }
+                else if ((sum < E_Sum && j == E_Count-1 && iRange == 0)) {
+                    cout << "-1" << endl;
+                }
+                else if (sum > E_Sum) {
+                    iRange++;
+                    j = iRange - 1;
+                    sum = 0;
+                }
+                else if (sum < E_Sum) { continue; }
+                else { cout << "-1" << std::endl; }
             }
-            else if (sum > E_Sum) {
-                iRange++;
-                j = iRange - 1;
-                sum = 0;
-            }
-            else { cout << "-1" << std::endl; }
-        }
-        sum = 0;
-        delete arr;
+            sum = 0;
+            delete arr;
     }
 
-
-    //code
-    return 0;
-}
+    
+	//code
+	return 0;
 }
