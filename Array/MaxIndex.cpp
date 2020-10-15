@@ -30,21 +30,14 @@ class Solution {
 public:
     int maxIndexDiff(int arr[], int n)
     {
-        int mIndex = 0;
+        int mIndex = INT_MIN;
         for (int i = 0; i < n; i++)
         {
-            for (int j = n - 1; j <= 0; j--)
-            {
-                printf("arr[%d] %d arr[%d] j %d \n ", i, j, arr[i], arr[j]);
-                if (arr[i] <= arr[j])
-                {
-                    if (mIndex < j - i)
-                    {
-                        mIndex = j - i;
-                    }
-                }
-            }
-            // code here
+            int j = n - 1;
+            while (arr[j] < arr[i])
+                j--;
+            if (j - i > mIndex)
+                mIndex = j - i;
         }
         return mIndex;
     }
